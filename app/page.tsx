@@ -5,12 +5,14 @@ import { PasskeyModal } from "@/components/PasskeyModal";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 export default function Home() {
   const searchParams = useSearchParams();
   const isAdmin = searchParams.get('admin') === 'true';
 
   return (
+    <Suspense fallback={<div>Loading...😭</div>}>
     <div className="flex h-screen max-h-screen">
       {isAdmin && <PasskeyModal />}
 
@@ -42,5 +44,6 @@ export default function Home() {
         className="side-img max-w-[50%]"
       />
     </div>
+    </Suspense>
   );
 }
