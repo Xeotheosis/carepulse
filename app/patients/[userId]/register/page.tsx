@@ -2,6 +2,7 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import RegisterForm from "@/components/forms/RegisterForm";
 import { getPatient, getUser } from "@/lib/actions/patient.actions";
+import { Suspense } from "react";
 
 const Register = async ({ params }: { params: { userId: string } }) => {
   // Await params before using it
@@ -14,6 +15,7 @@ const Register = async ({ params }: { params: { userId: string } }) => {
 
   return (
     <div className="flex h-screen max-h-screen">
+       <Suspense fallback={<div>Loading...😭</div>}>
       <section className="remove-scrollbar container">
         <div className="sub-container max-w-[860px] flex-1 flex-col py-10">
           <Image
@@ -37,6 +39,7 @@ const Register = async ({ params }: { params: { userId: string } }) => {
         alt="patient"
         className="side-img max-w-[390px]"
       />
+      </Suspense>
     </div>
   );
 };

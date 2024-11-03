@@ -6,6 +6,7 @@ import { getAppointment } from '@/lib/actions/appointment.actions'
 import { Doctors } from '@/constants'
 import { formatDateTime } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import { Suspense } from 'react'
 
 const page = async ({params: {userId},searchParams }:SearchParamProps) => {
 
@@ -16,6 +17,7 @@ const page = async ({params: {userId},searchParams }:SearchParamProps) => {
 
   return (
     <div className='flex h-screen max-h-screen px-[5%]'>
+       <Suspense fallback={<div>Loading...😭</div>}>
       <div className='success-img'>
         <Link href="/">
         <Image
@@ -68,6 +70,7 @@ const page = async ({params: {userId},searchParams }:SearchParamProps) => {
        </Button>
        <p className='copyright'> &copy; 2024 CarePulse</p>
       </div>
+      </Suspense>
     </div>
   )
 }
