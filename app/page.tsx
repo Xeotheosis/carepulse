@@ -12,8 +12,8 @@ export default function Home() {
   const isAdmin = searchParams.get('admin') === 'true';
 
   return (
-    <Suspense fallback={<div>Loading...😭</div>}>
     <div className="flex h-screen max-h-screen">
+      <Suspense fallback={<div>Loading...😭</div>}>
       {isAdmin && <PasskeyModal />}
 
       <section className="remove-scrollbar container my-auto">
@@ -43,7 +43,7 @@ export default function Home() {
         alt="hero image"
         className="side-img max-w-[50%]"
       />
-    </div>
     </Suspense>
+    </div>
   );
 }
